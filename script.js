@@ -40,7 +40,7 @@ const sC=mk(200,()=>({x:R()*W,y:R()*H,r:R()*1.5+.3,p:R()*6.28,h:170+R()*150,v:R(
 function drawL(t){const c=cx.L;c.clearRect(0,0,W,H);
  for(const s of sL){const x=s.x*W+mx*s.d*22,y=s.y*H+my*s.d*22,bh=isM()?s.y<.5:s.x<.5,a=.35+.65*Math.abs(Math.sin(t/800+s.p));
   c.fillStyle=bh?`rgba(255,255,255,${a})`:`hsla(${s.h},95%,80%,${a})`;c.beginPath();c.arc(x,y,s.r,0,6.28);c.fill()}}
-function drawB(){const c=cx.B,ox=isM()?W*.6:W*.76,oy=isM()?H*.82:H*.5;c.clearRect(0,0,W,H);
+function drawB(){const c=cx.B,ox=isM()?W*.5:W*.76,oy=isM()?W*.2:H*.5;c.clearRect(0,0,W,H);
  for(const s of sB){const dx=ox-s.x,dy=oy-s.y,d=Math.hypot(dx,dy)||1,v=.25+70/d;
   s.x+=dx/d*v-dy/d*v*.45;s.y+=dy/d*v+dx/d*v*.45;
   if(d<30){const e=R()*4;s.x=e<1?0:e<2?W:R()*W;s.y=e<2?R()*H:e<3?0:H}
@@ -58,14 +58,14 @@ function reveal(id){const s=$("#"+id),b=s.querySelector(".big");s.classList.remo
 function flash(bg){const f=$("#flash");f.style.background=bg;f.classList.remove("f");void f.offsetWidth;f.classList.add("f")}
 const clearFx=()=>["suck","stretch","zoomout"].forEach(c=>document.querySelectorAll("."+c).forEach(e=>e.classList.remove(c)));
 
-/* Masuk Blackhole (klik orb ATAU Switch dari Cosmic) */
+/* Masuk Blackhole */
 function enterBlackhole(){if(busy)return;busy=true;
  $("#"+cur).classList.add("suck");$("#sing").classList.add("go");
  setTimeout(()=>flash("#fff"),1250);
  setTimeout(()=>{show("bh");clearFx();$("#sing").classList.remove("go");reveal("bh")},1650);
  setTimeout(()=>busy=false,2300)}
 
-/* Masuk Cosmic (klik orb ATAU Switch dari Blackhole): warp speed */
+/* Masuk Cosmic */
 function enterCosmic(){if(busy)return;busy=true;
  const prev=$("#"+cur),f=cv.F,c=cx.F;prev.classList.add("stretch");f.style.display="block";c.clearRect(0,0,W,H);
  const R0=Math.hypot(W,H)/2,st=mk(280,()=>({a:R()*6.28,b:R()*R0*.25+4,v:.6+R()*1.2,h:190+R()*130})),t0=performance.now();
