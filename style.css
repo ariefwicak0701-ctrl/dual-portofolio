@@ -115,4 +115,29 @@ h2{font-size:.8rem;letter-spacing:.35em;text-transform:uppercase;color:var(--ac)
 /* Tombol Navigasi atas di HP */
 .nav{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:50%;transform:translateX(50%);width:90%;justify-content:center}
 .nav button{flex:1;text-align:center;padding:11px 16px;background:rgba(20,20,30,0.85);border-color:rgba(255,255,255,0.3)}
+
+/* ===== TAMBAHAN MOBILE: LAYOUT ATAS-BAWAH & WARNA ===== */
+/* Tukar posisi: Cosmic di atas, Blackhole di bawah */
+.hc{top:0!important;left:0;right:auto}
+.hb{top:50%!important;left:0;right:auto}
+
+/* Pastikan kedua orb bisa diklik secara indipenden dan tidak saling menutup */
+#landing .half{z-index:1}
+.orbwrap{pointer-events:auto!important;z-index:2}
+.div{z-index:3}
+
+/* Warna lebih mencolok di HP seperti tampilan di laptop */
+.hb{background:radial-gradient(ellipse at center,#141420,#030305 75%)!important}
+.hc{background:radial-gradient(ellipse at 50% 40%,#3a1c6e,#1b0b3a 60%,#0a041a)!important}
+
+/* Ukuran orb lebih proporsional di layar HP */
+#landing .bhole{--s:150px}
+#landing .planet{--s:140px}
+
+/* Posisi background orb profil: Blackhole kanan, Cosmic kiri */
+#bigB{right:0!important;left:auto!important}
+#bigC{left:0!important;right:auto!important}
+
+/* Tombol navigasi lebih jelas dan mencolok di HP */
+.nav button{background:rgba(20,20,30,0.95)!important;border-color:rgba(255,255,255,0.4)!important}
 }
